@@ -3,6 +3,10 @@ export default async function MessagesLayout({ children }) {
     headers: {
       'X-ID': 'layout',
     },
+    next : {
+      revalidate: 5,
+      tags: ['msg'],
+    }
   });
   const messages = await response.json();
   const totalMessages = messages.length;
